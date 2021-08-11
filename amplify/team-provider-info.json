@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fifagg-dev-193748-authRole",
+      "UnauthRoleArn": "arn:aws:iam::188889768046:role/amplify-fifagg-dev-193748-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::188889768046:role/amplify-fifagg-dev-193748-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-fifagg-dev-193748-deployment",
+      "UnauthRoleName": "amplify-fifagg-dev-193748-unauthRole",
+      "StackName": "amplify-fifagg-dev-193748",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:188889768046:stack/amplify-fifagg-dev-193748/2e170fb0-fa90-11eb-9917-0eefd8c2fe4d",
+      "AmplifyAppId": "d1fed6z7lf159m"
+    }
+  }
+}
