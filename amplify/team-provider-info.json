@@ -10,6 +10,11 @@
       "StackName": "amplify-fifagg-dev-193748",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:188889768046:stack/amplify-fifagg-dev-193748/2e170fb0-fa90-11eb-9917-0eefd8c2fe4d",
       "AmplifyAppId": "d1fed6z7lf159m"
+    },
+    "categories": {
+      "auth": {
+        "fifaggf5fb93c3": {}
+      }
     }
   }
 }

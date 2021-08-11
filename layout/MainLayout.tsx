@@ -32,7 +32,6 @@ import NavContent from "../navigation/NavContent"
 import MainHeader from "../components/Header"
 import { createStyles, makeStyles } from "@material-ui/styles"
 import { paleteState } from "state/theme"
-import MainLayout from "layout/MainLayout"
 
 const Header = getHeader(styled)
 const DrawerSidebar = getDrawerSidebar(styled)
@@ -51,31 +50,38 @@ const useStyles = (custom: Theme) =>
     })
   )
 
-function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side")
-    if (jssStyles) {
-      jssStyles.parentElement?.removeChild(jssStyles)
-    }
-  }, [])
+const MainLayout = ({ children }) => {
+  const [palette, setPalette] = useRecoilState(paleteState)
+  const sty = useStyles(getTheme(palette))()
 
   return (
-    <React.Fragment>
-      <Head>
-        <title>My page</title>
-        <meta
-          name='viewport'
-          content='minimum-scale=1, initial-scale=1, width=device-width'
-        />
-      </Head>
-      <RecoilRoot>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
-      </RecoilRoot>
-    </React.Fragment>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={getTheme(palette)}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Root scheme={getStandardScheme()}>
+          {({ state: { sidebar } }) => (
+            <>
+              <Header className={sty.root}>
+                <Toolbar className={sty.root}>
+                  <MainHeader />
+                </Toolbar>
+              </Header>
+              <DrawerSidebar sidebarId='primarySidebar'>
+                <SidebarContent>
+                  <NavHeader collapsed={sidebar.primarySidebar.collapsed} />
+                  <NavContent />
+                </SidebarContent>
+                <CollapseBtn />
+              </DrawerSidebar>
+              <Content>{children}</Content>
+              <Footer>Footer</Footer>
+            </>
+          )}
+        </Root>
+      </ThemeProvider>
+    </StylesProvider>
   )
 }
 
-export default MyApp
+export default MainLayout
